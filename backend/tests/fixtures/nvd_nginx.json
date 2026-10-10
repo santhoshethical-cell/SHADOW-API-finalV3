@@ -1,0 +1,142 @@
+{
+ "vulnerabilities": [
+  {
+   "cve": {
+    "id": "CVE-2021-23017",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: nginx resolver off-by-one."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 7.7,
+        "baseSeverity": "HIGH"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-193"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:f5:nginx:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "0.6.18",
+          "versionEndExcluding": "1.20.1"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23017",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2013-2028",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: older record under the legacy nginx:nginx CPE."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 7.5,
+        "baseSeverity": "HIGH"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:nginx:nginx:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "1.3.9",
+          "versionEndIncluding": "1.4.0"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-2028",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

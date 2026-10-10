@@ -1,0 +1,516 @@
+{
+ "resultsPerPage": 7,
+ "startIndex": 0,
+ "totalResults": 7,
+ "format": "NVD_CVE",
+ "version": "2.0",
+ "vulnerabilities": [
+  {
+   "cve": {
+    "id": "CVE-2020-11022",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: jQuery htmlPrefilter XSS when passing untrusted HTML to DOM manipulation methods."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 6.1,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "1.2",
+          "versionEndExcluding": "3.5.0"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2",
+      "source": "github",
+      "tags": [
+       "Mitigation",
+       "Third Party Advisory"
+      ]
+     },
+     {
+      "url": "https://blog.jquery.com/2020/04/10/jquery-3-5-0-released",
+      "source": "github",
+      "tags": [
+       "Release Notes"
+      ]
+     },
+     {
+      "url": "javascript:alert(1)",
+      "source": "evil",
+      "tags": [
+       "Patch"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2019-11358",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: jQuery prototype pollution in extend()."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 6.1,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-1321"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionEndExcluding": "3.4.0"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-11358",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2099-0001",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: inclusive upper bound test."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 5.0,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartExcluding": "3.6.0",
+          "versionEndIncluding": "3.6.4"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2099-0001",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2099-0002",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Rejected",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: rejected record."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 6.1,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionEndExcluding": "9.9.9"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2099-0002",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2099-0003",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: only affected together with a platform."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 7.5,
+        "baseSeverity": "HIGH"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "operator": "AND",
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionEndExcluding": "3.7.0"
+         }
+        ]
+       },
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": false,
+          "criteria": "cpe:2.3:o:examplecorp:appliance_os:-:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2099-0003",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2099-0004",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: BOLA-like weakness in jQuery to prove CWE is never used for behavioural findings."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 8.1,
+        "baseSeverity": "HIGH"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-639"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "3.4.0",
+          "versionEndExcluding": "3.4.2"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2099-0004",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2099-0005",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Awaiting Analysis",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: awaiting analysis record."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 6.1,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "2.0.0",
+          "versionEndExcluding": "2.2.5"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2099-0005",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

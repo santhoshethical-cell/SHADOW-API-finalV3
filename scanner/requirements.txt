@@ -1,0 +1,24 @@
+# HTTP & Networking
+httpx[http2]>=0.27.0
+
+# HTML/JS Parsing
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# Browser Automation & Traffic Interception
+playwright>=1.40.0
+
+# CLI
+rich>=13.0.0
+click>=8.1.0
+
+# Interactive TUI (mouse-driven, themed). Optional: the tool falls back to a
+# Rich menu TUI if this is unavailable.
+textual>=0.60.0
+
+# Reporting
+jinja2>=3.1.0
+PyYAML>=6.0.0
+
+# URL parsing
+tldextract>=5.0.0

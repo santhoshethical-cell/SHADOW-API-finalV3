@@ -1,0 +1,155 @@
+{
+ "scan_id": "fixture",
+ "target_url": "https://app.example.test/",
+ "started_at": "2026-10-10T03:00:00+00:00",
+ "completed_at": "2026-10-10T03:05:00+00:00",
+ "summary": {
+  "total_endpoints_discovered": 12,
+  "shadow_unmanaged_endpoints": 2,
+  "documented_endpoints": 8,
+  "unknown_documentation_status": 2,
+  "vulnerabilities_found": 5,
+  "overall_risk_score": 8.2,
+  "overall_risk_level": "High",
+  "tests_executed": 9
+ },
+ "endpoints": {
+  "all": [
+   {
+    "id": "e1",
+    "method": "GET",
+    "url": "https://app.example.test/api/users/1",
+    "documentation_status": "documented"
+   }
+  ],
+  "shadow": [
+   {
+    "id": "e2",
+    "method": "GET",
+    "url": "https://app.example.test/api/internal/debug"
+   }
+  ]
+ },
+ "vulnerabilities": [
+  {
+   "id": "v1",
+   "endpoint_id": "e1",
+   "owasp_category": "API1",
+   "owasp_name": "Broken Object Level Authorization (BOLA)",
+   "title": "BOLA on user object",
+   "description": "User B can read user A's record.",
+   "severity": "Critical",
+   "status": "Confirmed",
+   "risk_score": 9.1,
+   "confidence": 0.95,
+   "poc_request": "GET https://app.example.test/api/users/1\nAuthorization: [REDACTED]",
+   "poc_response": "{}",
+   "poc_status_code": 200,
+   "poc_evidence": "200 with other user's email",
+   "remediation": "Check object ownership on every request.",
+   "cwe_id": "CWE-639",
+   "references": [
+    "https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/"
+   ],
+   "found_at": "2026-10-10T03:04:00+00:00"
+  },
+  {
+   "id": "v2",
+   "endpoint_id": "e1",
+   "owasp_category": "API2",
+   "owasp_name": "Broken Authentication",
+   "title": "Expired token accepted",
+   "description": "Indicator only.",
+   "severity": "High",
+   "status": "Potential",
+   "risk_score": 7.0,
+   "confidence": 0.5,
+   "remediation": "Validate token expiry.",
+   "cwe_id": "CWE-287",
+   "references": []
+  },
+  {
+   "id": "v3",
+   "endpoint_id": "e2",
+   "owasp_category": "API8",
+   "owasp_name": "Security Misconfiguration",
+   "title": "=HYPERLINK(\"http://evil.test\",\"click\")",
+   "description": "Formula injection test title.",
+   "severity": "Medium",
+   "status": "Confirmed",
+   "risk_score": 5.0,
+   "confidence": 0.7,
+   "remediation": "-cmd|' /C calc'!A0",
+   "cwe_id": "CWE-16",
+   "references": []
+  },
+  {
+   "id": "v4",
+   "endpoint_id": "e2",
+   "owasp_category": "API3",
+   "owasp_name": "Broken Object Property Level Authorization",
+   "title": "Dismissed exposure",
+   "description": "",
+   "severity": "Low",
+   "status": "False Positive",
+   "risk_score": 2.0,
+   "confidence": 0.3,
+   "remediation": "",
+   "cwe_id": null,
+   "references": []
+  },
+  {
+   "id": "v5",
+   "endpoint_id": "e2",
+   "owasp_category": "API4",
+   "owasp_name": "Unrestricted Resource Consumption",
+   "title": "Rate limit not tested",
+   "description": "",
+   "severity": "Medium",
+   "status": "Not Tested",
+   "risk_score": 0,
+   "confidence": 0.0,
+   "remediation": "",
+   "cwe_id": null,
+   "references": []
+  }
+ ],
+ "validation_results": [
+  {
+   "id": "r1",
+   "validator": "bola",
+   "method": "GET",
+   "result": "vulnerable",
+   "vulnerability_category": "bola_idor"
+  },
+  {
+   "id": "r2",
+   "validator": "auth",
+   "method": "GET",
+   "result": "inconclusive",
+   "vulnerability_category": "authentication_issue"
+  },
+  {
+   "id": "r3",
+   "validator": "rate_limit",
+   "method": "GET",
+   "result": "skipped",
+   "vulnerability_category": "rate_limit_weakness"
+  },
+  {
+   "id": "r4",
+   "validator": "injection",
+   "method": "GET",
+   "result": "error",
+   "vulnerability_category": "injection_indicator"
+  },
+  {
+   "id": "r5",
+   "validator": "data_exposure",
+   "method": "GET",
+   "result": "protected",
+   "vulnerability_category": "excessive_data_exposure"
+  }
+ ],
+ "warnings": []
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" data-theme="cyber">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile · Shadow API Scanner</title>
+  <link rel="stylesheet" href="/static/styles.css?v=7">
+  <script defer src="/static/profile.js?v=6"></script>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand small"><span class="brand-mark">◇</span><strong>Shadow API Scanner</strong></div>
+    <div class="topbar-right">
+      <a href="/" class="btn ghost">← Scanner</a>
+      <span id="who" class="muted"></span>
+      <button id="logout" class="btn ghost">Log out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- MY ACCOUNT -->
+    <div class="panel">
+      <h2>My account</h2>
+      <div class="profile-row">
+        <div class="profile-field"><small>Username</small><b id="p-username" class="mono">—</b></div>
+        <div class="profile-field"><small>Role</small><span id="p-role" class="role-badge">—</span></div>
+      </div>
+      <h3 class="section-h">Change my password</h3>
+      <form id="pw-form" class="stack narrow">
+        <label>New password<input id="pw1" type="password" autocomplete="new-password" required></label>
+        <label>Confirm<input id="pw2" type="password" autocomplete="new-password" required></label>
+        <button class="btn primary" type="submit">Update password</button>
+        <p id="pw-msg" class="msg" hidden></p>
+      </form>
+    </div>
+
+    <!-- USER MANAGEMENT (admin only) -->
+    <div id="admin-panel" class="panel" hidden>
+      <h2>Users <span class="muted" style="font-size:13px;font-weight:400">— administrator only</span></h2>
+      <p class="muted section-note">Create accounts for people who should use the tool. Give normal users the
+        <strong>user</strong> role (they can run scans and view reports, but cannot manage users). Give
+        <strong>admin</strong> only to those who should manage everything.</p>
+
+      <form id="create-form" class="create-row">
+        <label>Username<input id="cu-name" placeholder="e.g. kishan" required></label>
+        <label>Role
+          <select id="cu-role">
+            <option value="user">user (use the tool only)</option>
+            <option value="admin">admin (full access)</option>
+          </select>
+        </label>
+        <button class="btn primary" type="submit">Create user</button>
+      </form>
+      <p id="create-msg" class="msg" hidden></p>
+
+      <div id="temp-pw-box" class="temp-pw" hidden>
+        <div>
+          <small>One-time password for <b id="tp-user" class="mono"></b> — copy it now, it is shown once.
+            They must change it at first login.</small>
+          <div class="tp-value mono" id="tp-value"></div>
+        </div>
+        <button id="tp-dismiss" class="btn ghost">Done</button>
+      </div>
+
+      <h3 class="section-h">Existing users</h3>
+      <div id="users-list" class="users-list"></div>
+    </div>
+
+    <!-- CVE DATABASE + AI STATUS (admin only) -->
+    <div id="cvedb-panel" class="panel" hidden>
+      <h2>Vulnerability database <span class="muted" style="font-size:13px;font-weight:400">— administrator only</span></h2>
+      <p class="muted section-note">Component CVE matching runs offline against this local copy of NVD data. Updates
+        download only the products in the component catalog and replace the database atomically — if an update fails,
+        the previous data stays in use. Set <span class="mono">SAS_NVD_API_KEY</span> on the server for faster updates.</p>
+      <div id="cvedb-summary" class="env-status"></div>
+      <div class="enrich-actions">
+        <button id="cvedb-incr" class="btn primary" type="button">Update (incremental)</button>
+        <button id="cvedb-full" class="btn ghost" type="button">Full re-download</button>
+      </div>
+      <p id="cvedb-msg" class="msg" hidden></p>
+      <div id="cvedb-log" class="console small" hidden></div>
+      <h3 class="section-h">Coverage by component</h3>
+      <div id="cvedb-coverage"></div>
+      <h3 class="section-h">AI analysis configuration</h3>
+      <div id="ai-config" class="muted section-note"></div>
+    </div>
+  </main>
+</body>
+</html>

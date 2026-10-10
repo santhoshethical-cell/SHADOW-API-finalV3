@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-theme="cyber">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shadow API Scanner</title>
+  <link rel="stylesheet" href="/static/styles.css?v=7">
+  <script defer src="/static/vendor/chart.umd.min.js?v=5"></script>
+  <script defer src="/static/advanced.js?v=5"></script>
+  <script defer src="/static/app.js?v=7"></script>
+  <script defer src="/static/enrichment.js?v=7"></script>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand small"><span class="brand-mark">◇</span><strong>Shadow API Scanner</strong></div>
+    <div class="topbar-right">
+      <span id="who" class="muted"></span>
+      <a href="/profile" class="btn ghost">Profile</a>
+      <button id="logout" class="btn ghost">Log out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- SCAN SETUP -->
+    <div id="panel-setup" class="panel">
+      <h2>New scan</h2>
+      <div id="env-status" class="env-status" aria-live="polite">
+        <span class="env-item"><span class="muted">CVE database:</span> <b id="env-cvedb">checking…</b></span>
+        <span class="env-item"><span class="muted">AI analysis:</span> <b id="env-ai">checking…</b></span>
+      </div>
+      <label class="field">Target URL
+        <input id="target-url" placeholder="https://your-authorized-target.example" spellcheck="false">
+      </label>
+
+      <div class="levels" id="levels">
+        <button class="level" data-level="basic" type="button">
+          <span class="level-name">Basic</span>
+          <span class="level-desc">Shadow-API discovery only (Phase 1 + 2)</span>
+        </button>
+        <button class="level" data-level="standard" type="button">
+          <span class="level-name">Standard</span>
+          <span class="level-desc">Discovery + security validation (Phase 3)</span>
+        </button>
+        <button class="level" data-level="advanced" type="button">
+          <span class="level-name">Advanced</span>
+          <span class="level-desc">Full pipeline, most thorough</span>
+        </button>
+      </div>
+
+      <label id="authz" class="authz" hidden>
+        <input type="checkbox" id="authz-check">
+        <span>I confirm I am <strong>authorized</strong> to run active security tests against this exact target.</span>
+      </label>
+
+      <details id="adv-options" class="adv-options">
+        <summary>Advanced options <small>— authentication, imports, and per-validator security tests</small></summary>
+        <div id="adv-body" class="adv-content"></div>
+      </details>
+
+      <div id="precheck-box" class="precheck" hidden></div>
+      <button id="start-scan" class="btn primary lg" type="button" disabled>Start scan</button>
+      <p id="setup-error" class="error" hidden></p>
+    </div>
+
+    <!-- HISTORY -->
+    <div id="panel-history" class="panel">
+      <h2>Scan history</h2>
+      <p class="muted section-note">Reopening a report reads the saved results and enrichment — it never rescans the target.</p>
+      <div id="history-list" class="history-list"><p class="muted">Loading…</p></div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div id="panel-progress" class="panel" hidden>
+      <div class="progress-head">
+        <h2>Scanning <span id="progress-target" class="mono"></span></h2>
+        <span id="progress-status" class="pill running">running</span>
+      </div>
+      <div class="phases" id="phases">
+        <div class="phase" data-phase="1"><span class="dot"></span>Phase 1 · Static analysis</div>
+        <div class="phase" data-phase="2"><span class="dot"></span>Phase 2 · Dynamic discovery</div>
+        <div class="phase" data-phase="3"><span class="dot"></span>Phase 3 · Security validation</div>
+        <div class="phase" data-phase="4"><span class="dot"></span>Phase 4 · Scoring &amp; report</div>
+      </div>
+      <div class="console" id="console" aria-live="polite"></div>
+    </div>
+
+    <!-- REPORT -->
+    <div id="panel-report" class="panel" hidden>
+      <div class="report-head">
+        <div class="tabs">
+          <button class="tab active" data-tab="summary">Summary</button>
+          <button class="tab" data-tab="technical">Technical</button>
+        </div>
+        <div class="exports">
+          <a id="export-pdf" class="btn ghost" download>Export PDF</a>
+          <a id="export-csv" class="btn ghost" download>Export CSV</a>
+          <a id="export-json" class="btn ghost" download>Export JSON</a>
+          <button id="new-scan" class="btn ghost">New scan</button>
+        </div>
+      </div>
+
+      <div id="tab-summary" class="tabpane">
+        <div class="summary-top">
+          <div class="gauge-card">
+            <canvas id="gauge" width="180" height="180"></canvas>
+            <div class="gauge-center"><span id="gauge-score">0.0</span><small id="gauge-level">Info</small></div>
+          </div>
+          <div class="headline-card">
+            <p id="headline" class="headline"></p>
+            <div class="stat-row" id="stat-row"></div>
+          </div>
+        </div>
+        <div class="charts charts-3">
+          <div class="chart-card"><h3>API inventory</h3><canvas id="chart-inventory"></canvas></div>
+          <div class="chart-card"><h3>Behavioural findings by severity <small class="muted">(confirmed vs potential)</small></h3><canvas id="chart-severity"></canvas></div>
+          <div class="chart-card"><h3>Behavioural findings by OWASP API category <small class="muted">(excl. dismissed)</small></h3><canvas id="chart-owasp"></canvas></div>
+        </div>
+
+        <div id="shadow-section" hidden>
+          <h3 class="section-h">Shadow / unmanaged APIs <span id="shadow-count" class="count-badge"></span></h3>
+          <p class="muted section-note">Active endpoints that are undocumented and unmanaged — review whether each should be documented, secured, or removed.</p>
+          <div id="shadow-list" class="shadow-list"></div>
+        </div>
+
+        <h3 class="section-h">Security findings <span class="muted section-sub">— behavioural results from the scanner</span></h3>
+        <p class="muted section-note legend">
+          <span class="status-badge confirmed">Confirmed</span> scanner evidence attached ·
+          <span class="status-badge potential">Potential</span> needs validation ·
+          <span class="status-badge unknown">Unknown</span> not tested.
+          Component CVEs are listed separately below and are never counted here.</p>
+        <div id="findings" class="findings"></div>
+        <p id="checks-note" class="muted section-note" hidden></p>
+
+        <!-- ENRICHMENT (separate from the scanner phases) -->
+        <div id="enrich-section" class="enrich">
+          <div class="cve-head">
+            <h3 class="section-h">Components &amp; known CVEs <span id="enrich-status" class="pill">—</span></h3>
+            <div class="enrich-actions">
+              <button id="rematch-btn" class="btn ghost" title="Match the stored components against the local CVE database again. Does not contact the target.">Re-match offline</button>
+              <button id="recheck-btn" class="btn ghost" title="Fingerprint the target again (contacts the target) and match against the local CVE database.">Re-check components</button>
+            </div>
+          </div>
+          <p class="muted section-note">Runs after the scan as a separate step. Components are identified from the
+            live page (runtime globals, response headers, script names) and matched <strong>offline</strong> against the
+            local CVE database. A version match means the observed version is inside an NVD affected range — it is
+            <strong>not</strong> proof the target is exploitable.</p>
+          <div id="enrich-notice" class="notice" hidden></div>
+          <div id="enrich-stages" class="stages"></div>
+          <div id="enrich-components"></div>
+          <div id="enrich-matches"></div>
+        </div>
+
+        <div id="remediation-section">
+          <h3 class="section-h">Remediation &amp; verification</h3>
+          <p class="muted section-note">Deterministic guidance built from scanner remediation text, OWASP/CWE references and
+            the CVE database. Upgrade targets are shown as verified only when a source documents a fixed version.</p>
+          <div id="remediation-list"></div>
+        </div>
+
+        <div id="ai-section">
+          <h3 class="section-h">AI analysis <span id="ai-pill" class="pill">—</span></h3>
+          <p id="ai-disclosure" class="muted section-note"></p>
+          <div id="ai-content"></div>
+        </div>
+      </div>
+
+      <div id="tab-technical" class="tabpane" hidden>
+        <div id="tech-content"></div>
+        <div id="tech-enrichment" class="tech-section"></div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

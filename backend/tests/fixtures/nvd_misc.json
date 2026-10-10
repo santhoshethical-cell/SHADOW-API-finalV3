@@ -1,0 +1,219 @@
+{
+ "vulnerabilities": [
+  {
+   "cve": {
+    "id": "CVE-2024-29041",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: Express open redirect."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 6.1,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-79"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:openjsf:express:*:*:*:*:*:node.js:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionEndExcluding": "4.19.2"
+         },
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:openjsf:express:5.0.0:alpha1:*:*:*:node.js:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000"
+         },
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:openjsf:express:5.0.0:beta1:*:*:*:node.js:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-29041",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2021-3711",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: OpenSSL SM2 decryption buffer overflow."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 9.8,
+        "baseSeverity": "CRITICAL"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-120"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "1.1.1",
+          "versionEndExcluding": "1.1.1l"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3711",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "cve": {
+    "id": "CVE-2022-25844",
+    "sourceIdentifier": "nvd@nist.gov",
+    "published": "2020-04-29T22:15:11.903",
+    "lastModified": "2024-11-21T04:56:00.000",
+    "vulnStatus": "Analyzed",
+    "descriptions": [
+     {
+      "lang": "en",
+      "value": "Fixture: AngularJS ReDoS via locale pattern."
+     }
+    ],
+    "metrics": {
+     "cvssMetricV31": [
+      {
+       "source": "nvd@nist.gov",
+       "type": "Primary",
+       "cvssData": {
+        "version": "3.1",
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "baseScore": 6.5,
+        "baseSeverity": "MEDIUM"
+       }
+      }
+     ]
+    },
+    "weaknesses": [
+     {
+      "source": "nvd@nist.gov",
+      "type": "Primary",
+      "description": [
+       {
+        "lang": "en",
+        "value": "CWE-1333"
+       }
+      ]
+     }
+    ],
+    "configurations": [
+     {
+      "nodes": [
+       {
+        "operator": "OR",
+        "negate": false,
+        "cpeMatch": [
+         {
+          "vulnerable": true,
+          "criteria": "cpe:2.3:a:angularjs:angularjs:*:*:*:*:*:*:*:*",
+          "matchCriteriaId": "00000000-0000-0000-0000-000000000000",
+          "versionStartIncluding": "1.7.0"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "references": [
+     {
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-25844",
+      "source": "nvd@nist.gov",
+      "tags": [
+       "Third Party Advisory"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

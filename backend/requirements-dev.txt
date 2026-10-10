@@ -1,0 +1,2 @@
+# Test-only dependencies (installed by run.py on first setup).
+pytest>=8.0
